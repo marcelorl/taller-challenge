@@ -6,22 +6,26 @@ function exercise1(coins) {
     let sumChange = 0;
     // going through coins
     for (let i = 0; i < coins.length; i++) {
+        const coin = parseInt(coins[i], 10);
+        if (Number.isNaN(coin)) {
+            continue;
+        }
         // if the current coin is lower than the
         // summed change + 1 then we found the minimum
-        if (coins[i] > sumChange + 1) {
+        if (coin > sumChange + 1) {
             return sumChange + 1;
         }
 
         // while we didnt find the minimum we keep summing the coins
         // it means any previous value from the current coin + 1 can have its change
-        sumChange += coins[i];
+        sumChange += coin;
     }
 
     // otherwise return change + 1
     return sumChange + 1;
 }
 
-console.log('exercise 1 - test case 1 - [5, 7, 1, 1, 2, 3, 22]', exercise1([5, 7, 1, 1, 2, 3, 22]));
+console.log('exercise 1 - test case 1 - [5, 7, 1, 1, 2, 3, 22]', exercise1(['5', 7, 1, 1, 2, 3, 22, 'marcelo']));
 console.log('exercise 1 - test case 2 - [1, 1, 1, 1, 1]', exercise1([1, 1, 1, 1, 1]));
 console.log('exercise 1 - test case 3 - [1, 5, 1, 1, 1, 10, 15, 20, 100]', exercise1([1, 5, 1, 1, 1, 10, 15, 20, 100]));
 
